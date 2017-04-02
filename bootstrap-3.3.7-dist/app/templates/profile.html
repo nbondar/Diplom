@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="ico/favicon.ico">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="wrapper container" id="main">
+          <!--Save Modal-->
+    <div class="container">
+        <div class="modal fade" id="savemodal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Вы уверены?!</h4>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button"  class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                        <button href="profile.html" type="submit"  class="btn btn-primary ">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+      <div class="row">
+              <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container-fluid">
+                   <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="#">EasyDocker</a>
+                    </div>
+                 <div class="navbar-collapse collapse">
+                   <ul class="nav navbar-nav navbar-right">
+                     <li><a href="dashboard.html">Dashboard</a></li>
+                     <li><a href="settings.html">Settings</a></li>
+                      <li class="active"><a href="profile.html">Profile</a></li>
+                      <li><a href="main.html" id="exit">Logout</a></li>
+                    </ul>
+                  <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                  </form>
+                  </div>
+                </div>
+              </div>
+        
+        
+        <div class="container" style="margin-top:50px">
+          <div class="row">
+
+            <div class="col-md-3">
+              <ul class="nav nav-sidebar affix-top" >
+                <li class="active"><a href="#" font size="15" font color="red">Overview</a></li>
+               <li><a href="#">Create new containers</a></li>
+                <li><a href="">List of containers</a></li>
+              </ul>
+              <ul class="nav nav-sidebar">
+                <li><a href="">Create new namespace</a></li>
+                <li><a href="">Create new deployment</a></li>
+                <li><a href="">Create new service </a></li>
+              </ul>
+             </div>
+
+            <div class="col-md-9">
+              <div class="container">
+
+                <div class="header">
+                    <h1 class="text-warning">Enter your profile info!</h1>
+                </div>
+
+                <div class="container">
+                    <form class="form-horizontal">
+
+                        <div class="form-group ">
+                            <label for="inputEmail" class="col-xs-2 control-label">Адрес email:</label>
+                            <div class="col-xs-5">
+                                <input type="email" class="form-control" id="inputEmail" maxlength="30" placeholder="Введите email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-xs-2 control-label">Пароль:</label>
+                            <div class="col-xs-5">
+                                <input type="password" class="form-control" id="inputPassword1" placeholder="Введите пароль">
+                            </div>
+                        </div>
+                     
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-xs-2 control-label">Повторите пароль:</label>
+                            <div class="col-xs-5">
+                                <input type="password" class="form-control" id="inputPassword2" placeholder="Введите пароль">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-xs-2 control-label">Фамилия:</label>
+                            <div class="col-xs-5">
+                                <input type="surname" class="form-control" id="inputSurname" placeholder="Введите фамилию">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-xs-2 control-label">Имя:</label>
+                            <div class="col-xs-5">
+                                <input type="surname" class="form-control" id="inputName" placeholder="Введите имя">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-xs-2 control-label">Телефон:</label>
+                            <div class="col-xs-5">
+                                <input type="phone" class="form-control" id="inputPhone" placeholder="Введите телефон">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top:10px">
+                            <div class="col-xs-offset-2 col-md-10">                               
+                                <button type="submit" class="btn btn-danger">Close</button>
+                                <button type="button" class="btn btn-info btn-primary" data-toggle="modal" data-target="#savemodal">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+              </div>
+
+            </div> 
+            <!--row-->
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>EasyDocker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link rel="shortcut icon" href="ico/favicon.ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+ <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+body {
+	
+
+	.wrapper {
+		padding: 0 0 50px 0;
+	}
+
+	header {
+		padding: 20px 0;
+	}
+}
+    </style>
+ </head>
+  <body>
+  <div class="wrapper container">
+  <header>
+	<a href="/"><img src="ico/favicon.ico" alt="Bondars logo"> EasyDocker </a>
+  </header>
+    <!--Login Modal-->
+   	<div class="container">
+		<div class="modal fade" id="loginmodal" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Please Sign In!</h4>
+					</div>
+					<div class="modal-body">
+					  <form class="form-signin" role="form">
+						<input type="email" class="form-control" placeholder="Email address" required autofocus>
+						<input type="password" class="form-control" placeholder="Password" required>
+							<div class="checkbox">
+								<label><input type="checkbox" id="cb_login"> Remember me </label>
+							</div>
+					  </form>	
+					</div>
+					<div class="modal-footer">
+						<a href="dashboard.html"<button type="submit"  class="btn btn-primary btn-block">Sign In</button>></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+	<!--SignUp modal-->
+	<div class="container">
+		<div class="modal fade" id="entermodal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Please Sign In!</h4>
+					</div>
+					<div class="modal-body">
+					  <form class="form-signin" role="form">
+						<input type="email" class="form-control" placeholder="Email address" required autofocus>
+						<input type="password" class="form-control" placeholder="Password" required>
+						<input type="password" class="form-control" placeholder="Repeat Password" required>
+					  </form>	
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary btn-block" >Sign Up</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+    <!-- Fixed navbar -->
+	<div class="container-fluid" id="main">
+    <div class="navbar navbar-default navbar-fixed-top " nav-link-padding="10px" nav-link-padding="30px" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+		<a class="navbar-left nav navbar-nav"><img src="ico/favicon.ico" width="40" height="40"></a>
+		<!-- <a class="navbar-brand" href="#">
+			<img alt="Bondar's" src="ico/favicon.ico">
+		</a> -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">		    
+            <li class="active"><a href="#">EasyDocker</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginmodal">Login</button>       
+            <button type="button" class="btn btn-info btn-primary" data-toggle="modal" data-target="#entermodal">Sig Up</button>
+          </ul>           
+        </div><!--/.nav-collapse -->	     
+      </div>
+    </div>
+	</div>
+	<footer></footer>
+	</div>
+    </body>
+    </html>
