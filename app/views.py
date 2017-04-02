@@ -32,3 +32,11 @@ def login():
     title = 'Sign In !',
     form = form,
     providers = app.config['LOGIN_PASS'])
+
+
+@app.route('/Registration') 
+def Register():
+ form = RegisterForm()
+ return render_template('register.html',
+    title = 'Register!)',
+    form = form)

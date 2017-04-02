@@ -1,0 +1,22 @@
+<div class="container">
+		<div class="modal fade" id="entermodal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Please Sign In!</h4>
+					</div>
+					<div class="modal-body">
+					  <form class="form-signin" role="form">
+						<input type="email" class="form-control" placeholder="Email address" required autofocus>
+						<input type="password" class="form-control" placeholder="Password" required>
+						<input type="password" class="form-control" placeholder="Repeat Password" required>
+					  </form>	
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary btn-block" >Sign Up</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
