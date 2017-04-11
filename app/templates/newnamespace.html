@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/static/ico/favicon.ico">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script src="{{ url_for('static', filename='js/namespace.js') }}"></script>
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+  </head>
+<style>
+.Container {
+        padding: 0;
+        margin: 0;
+}
+ 
+.Container li {
+        list-style-type: none; /* убрать кружочки/точечки */
+}
+.Node {
+    margin-left: 18px;
+    zoom: 1; /* спецсвойство против багов IE6,7. Ставит hasLayout */
+}
+ 
+/* Корневой узел от родительского контейнера не отодвинут.
+   Ему же не надо демонстрировать отступом, чей он сын.
+   Это правило идет после .Node, поэтому имеет более высокий приоритет
+   Так что class="Node IsRoot" дает margin-left:0
+*/
+.isRoot {
+    margin-left: 0;
+}
+.Expand {
+    width: 18px;
+    height: 18px;
+    /* принцип двухколоночной верстки. */
+    /* float:left и width дива Expand + margin-left дива Content */
+    float: left;
+}
+ 
+/* содержание (заголовок) узла */
+ .Content {
+    /* чтобы не налезать на Expand */
+    margin-left:18px;
+    /* высота заголовка - как минимум равна Expand
+        Т.е правая колонка всегда выше или равна левой.
+        Иначе нижний float будет пытаться разместиться на получившейся ступеньке
+    */   
+    min-height: 18px;
+}
+ 
+ /* все правила после * html выполняет только IE6 */
+* html .Content {
+    height: 18px; /* аналог min-height для IE6 */
+}
+.ExpandOpen .Container {
+    display: block;
+}
+ 
+.ExpandClosed .Container {
+    display: none;
+}
+.ExpandOpen .Expand, .ExpandClosed .Expand {
+    cursor: pointer; /* иконки скрытия-раскрытия */
+}
+ 
+.ExpandLeaf .Expand {
+    cursor: auto; /* листовой узел */
+}
+
+
+</style>
+  <body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="wrapper container" id="main">
+      <div class="row1">
+        <div class="span12">
+              <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container-fluid">
+
+                   <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="#">EasyDocker</a>
+                    </div>
+
+                 <div class="navbar-collapse collapse">
+                   <ul class="nav navbar-nav navbar-right">
+                     <li class="active"><a href="#dasboard">Dashboard</a></li>
+                     <li><a href="payment.html">Payment</a></li>
+                      <li><a href="profile">Profile</a></li>
+                      <li><a href="/logout" id="exit">Logout</a></li>
+                    </ul>
+
+                  <form class="navbar-form navbar-right form-inline">
+                    <input type="text" class="form-control" placeholder="Search...">
+              
+                      <button class="btn btn-info" type="button">
+                        <i class="glyphicon glyphicon-search"></i>
+                      </button>
+                    
+                  </form>
+                  </div>
+
+                </div>
+              </div>
+        </div>
+        
+        <div class="container" style="margin-top:50px">
+          <div class="row">
+
+            <div class="col-md-3">
+              <ul class="nav nav-sidebar affix-top" >
+                <li class="text-succes"><a href="dashboard">Overview</a></li>
+                <li><a href="#">Create new containers</a></li>
+                <li><a href="">List of containers</a></li>
+              </ul>
+              <ul class="nav nav-sidebar ">
+                <li class="actiive" ><a class="text-danger" href="#">Create new namespace</a></li>
+                <li><a href="">Create new deployment</a></li>
+                <li><a href="">Create new service </a></li>
+              </ul>
+             </div>
+
+            <div class="col-md-9">
+            <div class="container">
+
+                <div class="header">
+                    <h3 class="text-warning">Создайте свое пространство!</h3>
+                    
+                </div>
+
+                <div class="container">
+                <p> Namespace - это пространство пользователя, ваше личное хранилище проектов.</p> 
+                <p>Все ваши приложения будут храниться в пространстве. Вы можете создать 
+                неограниченно их количество.</p><p> Подробнее о них вы можете прочитать <a href="">здесь</a></p>
+                 <p> Чтобы создать пространство просто введите его имя! 
+                 Все очень просто!</p><p> Для удаления нужно выбрать соответствующее пространство и нажать удалить.</p> <p class="text-warning"> При удалении пространства удаляться и все проекты, входящие в него!!!</p></p>
+              <form type="submit" class="form-horizontal" action="" method="post" name="newnamespaceForm">
+
+                        <div class="form-group" style="margin-top: 15px">
+                            <label for="inputnamespace" class="col-xs-2 control-label">Введите имя нового пространства:</label>
+                            <div class="col-xs-3">
+                                <input id="namespace" name="namespace" style="margin-top:5px" ><font size="4" color="blue" face="Arial"></font></input>
+                            </div>
+                            <div class="col-xs-1" style="margin-top: 17px">
+                                <a type="button" OnClick="namespace('{{current_user.id}}');" method="post"  class="btn btn-primary " >Create</a>
+                            </div>
+                        </div>
+              </form>
+
+              <ul class="Container">
+                <li class="Node isRoot ExpandOpen">
+                  <div class="Expand"></div>
+                  <div class="Content"></div>
+                  <h4 class="text-succes"> Список пространств:</h4>
+                  {%  for i in namespaces %}
+
+                      <ul class="Container">
+                      <li class="Node ExpandLeaf">
+                      <div class="Expand"></div>
+                      <div class="Content" id="cont" class="text-danger">{{i.name}}</div>
+                      <div class="Content" id="cont" class="text-danger">{{i.timestamp.strftime("%A, %d. %B %Y %I:%M")}}</div>
+                      <p>-----------------------------------------------------<p>
+                      <a href="" style="margin-left: 25px">delete</a>
+                      </li>
+                     </ul>
+                 {% endfor %}
+                 </li>
+              </ul>
+               </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -12,12 +12,27 @@ class User(db.Model):
     name = db.Column(db.String(32))
     surname = db.Column(db.String(32))
     phonenumber = db.Column(db.Integer)
+    balance = db.Column(db.Integer)
     namespaces = db.relationship('Namespace', backref = 'user', lazy = 'dynamic')
     pay = db.relationship('Payment', backref = 'user', lazy = 'dynamic')
+    confirmed = db.Column(db.Boolean,  default=False)
 
+    
 
     def __repr__(self):
         return '<User %r>' % (self.nickname)
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
 
 class Namespace(db.Model):
     id = db.Column(db.Integer, primary_key = True, unique = True)       
@@ -29,7 +44,10 @@ class Namespace(db.Model):
 
 
     def __repr__(self):
-        return '<Namespace %r>' % (self.name)
+        return '<Namespace %s)>' % (self.name)
+
+    def get_id(self):
+        return self.id
 
 
 class Deployment(db.Model):

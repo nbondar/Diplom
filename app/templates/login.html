@@ -10,19 +10,7 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<style type="text/css">
-body {
-	
-
-	.wrapper {
-		padding: 0 0 50px 0;
-	}
-
-	header {
-		padding: 20px 0;
-	}
-}
-    </style>
+	 <script src="{{ url_for('static', filename='js/enter.js') }}"></script>
  </head>
   <body>
   {% with messages = get_flashed_messages() %}
@@ -38,14 +26,6 @@ body {
   <header>
 	<a href="/"><img src="/static/ico/favicon.ico" alt="Bondars logo"> EasyDocker </a>
   </header>
-
-<script type="text/javascript">
-function set_login(mail, pass)
-{  
-    document.loginform.elements.login.value = mail;
-    document.loginform.elements.password.value = pass;  
-}
-</script>
 
   <div class="container-fluid" id="main">
     <div class="navbar navbar-default navbar-fixed-top " nav-link-padding="10px" nav-link-padding="30px" role="navigation">
@@ -73,30 +53,31 @@ function set_login(mail, pass)
            </div>
           </div>
     <!--Login Modal-->
-   	<div class="container" style="margin-top:60px">
+   	<div class="container" style="margin-top:90px">
 		<form  action="" method="post" name="loginform" style="margin-left:100px">
 			
-		 {{form.hidden_tag()}}
+		 
  			 <div class="form-group">
     			<label for="inputEmail">Адрес email:</label>
-    			<br>{{form.login(size=50)}}</br>
+    			<input name="email" id="email" class="form-control"  placeholder="email" required >
   			</div> 
 
   			<div class="form-group">
     			<label for="inputPassword">Пароль:</label>
-    			<br>{{form.password(size=50)}}</br>
+    			
+    			<input type="password" id="password" class="form-control" placeholder="Password" required name="password">
   			</div>
-	    
-  		{% for pr in providers %}
-        <a href="javascript:set_login('{{pr.mail}}', '{{pr.pass}}');">{{pr.login}}</a> |
-        {% endfor %}
 
   			<div class="checkbox">
     			<label>
-      			<input type="checkbox"> <p>{{form.remember_me}} Запомнить мiня</p>
+      			<input type="checkbox"> <p> Запомнить мiня</p>
     			</label>
   			</div>
-  			<a type="submit" class="btn btn-primary" value="Sign In" >Войти</a>
+  			 <div class="form-group" >
+        <h3 id="Error" name="Error" class="text-danger" style="margin-left:30px"></h3>
+    </div>
+
+  			<a type="button"  class="btn btn-primary" value="Sign In" method="post" OnClick="enter();">Войти</a>
 		</form>
 
 	</div>
